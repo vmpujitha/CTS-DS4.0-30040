@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Date Format for dateOfBirth -->
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd"/>
+    </bean>
+
+    <!-- Skills -->
+    <bean id="skill1" class="com.cts.springlearn1.model.Skill">
+        <property name="id" value="1"/>
+        <property name="name" value="Java"/>
+    </bean>
+
+    <bean id="skill2" class="com.cts.springlearn1.model.Skill">
+        <property name="id" value="2"/>
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <!-- Departments -->
+    <bean id="department1" class="com.cts.springlearn1.model.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="IT"/>
+    </bean>
+
+    <!-- Employees -->
+    <bean id="employee1" class="com.cts.springlearn1.model.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="John Doe"/>
+        <property name="salary" value="50000.0"/>
+        <property name="permanent" value="true"/>
+        <property name="dateOfBirth">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="1990-01-01"/>
+            </bean>
+        </property>
+        <property name="department" ref="department1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill2"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Employee List -->
+    <util:list id="employeeList" value-type="com.cts.springlearn1.model.Employee">
+        <ref bean="employee1"/>
+    </util:list>
+</beans>
