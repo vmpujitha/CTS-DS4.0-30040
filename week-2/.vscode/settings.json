@@ -1,0 +1,22 @@
+{
+    "sqltools.connections": [
+        {
+            "oracleOptions": {
+                "privilege": "Normal",
+                "thickMode": true,
+                "autoCommit": true,
+                "lowerCase": true,
+                "limitPrefetchRows": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 1521,
+            "driver": "Oracle",
+            "name": "OracleLocal",
+            "group": "Oracle",
+            "database": "Oracle",
+            "username": "pujithavmjangalapalli@gmail.com",
+            "password": "Pujitha@2004"
+        }
+    ]
+}
